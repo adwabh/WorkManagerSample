@@ -14,11 +14,9 @@ import androidx.work.WorkerParameters;
 
 public class CleanupWorker extends Worker {
     private static final String TAG = CleanupWorker.class.getSimpleName();
-
     public CleanupWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
-
     @NonNull
     @Override
     public Result doWork() {
@@ -40,7 +38,6 @@ public class CleanupWorker extends Worker {
                     }
                 }
             }
-
             return Result.success();
         } catch (Exception exception) {
             Log.e(TAG, "Error cleaning up", exception);

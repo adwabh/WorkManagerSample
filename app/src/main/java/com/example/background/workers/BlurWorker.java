@@ -22,6 +22,7 @@ public class BlurWorker extends Worker {
 
     private static final String TAG = BlurWorker.class.getSimpleName();
 
+
     public BlurWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
@@ -33,7 +34,9 @@ public class BlurWorker extends Worker {
         Context applicationContext = getApplicationContext();
 
         try {
+
             String inputUri = getInputData().getString(Constants.KEY_IMAGE_URI);
+
             int blurLevel = getInputData().getInt(Constants.KEY_BLUR_LEVEL,0);
 //            Bitmap picture = BitmapFactory.decodeResource(
 //                    applicationContext.getResources(),
@@ -57,7 +60,6 @@ public class BlurWorker extends Worker {
             WorkerUtils.makeStatusNotification("Output is "
                     + outputUri.toString(), applicationContext);
 
-
             // If there were no errors, return SUCCESS
             return Result.success(new Data.Builder().putString(Constants.KEY_IMAGE_URI,outputUri.toString()).build());
         } catch (Throwable throwable) {
@@ -66,6 +68,7 @@ public class BlurWorker extends Worker {
             // but it's best to be explicit about it.
             // Thus if there were errors, we're return FAILURE
             Log.e(TAG, "Error applying blur", throwable);
+
             return Result.failure();
         }
     }

@@ -19,12 +19,14 @@ import java.util.Locale;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+
 public class SaveImageToFileWorker extends Worker {
     private static final String TAG = SaveImageToFileWorker.class.getSimpleName();
 
     private static final String TITLE = "Blurred Image";
     private static final SimpleDateFormat DATE_FORMATTER =
             new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss z", Locale.getDefault());
+
 
     public SaveImageToFileWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -37,6 +39,7 @@ public class SaveImageToFileWorker extends Worker {
 
         ContentResolver resolver = applicationContext.getContentResolver();
         try {
+
             String resourceUri = getInputData().getString(Constants.KEY_IMAGE_URI);// TODO get the input Uri from the Data object
             Bitmap bitmap = BitmapFactory.decodeStream(
                     resolver.openInputStream(Uri.parse(resourceUri)));
@@ -53,6 +56,4 @@ public class SaveImageToFileWorker extends Worker {
             return Result.failure();
         }
     }
-
-
 }

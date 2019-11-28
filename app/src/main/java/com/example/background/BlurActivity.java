@@ -102,6 +102,7 @@ public class BlurActivity extends AppCompatActivity {
                     showWorkFinished();
                     mOutputButton.setVisibility(View.VISIBLE);
                     Data data = status.getOutputData();
+
                     String stringFinal = data.getString(Constants.KEY_IMAGE_URI);
                     if (stringFinal!=null&& !TextUtils.isEmpty(stringFinal)) {
                         mFinalOutputUri = Uri.parse(stringFinal);

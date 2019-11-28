@@ -37,8 +37,7 @@ import androidx.work.WorkManager;
 import static com.example.background.Constants.TAG_OUTPUT;
 
 public class BlurViewModel extends ViewModel {
-
-    private final LiveData<List<WorkInfo>> mSavedWorkStatus;
+    private LiveData<List<WorkInfo>> mSavedWorkStatus;
     private WorkManager mWorkManager;
     private Uri mImageUri;
     private Uri mOutputImageUri;
